@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data
@@ -26,5 +27,9 @@ public class AppUserEntity extends AbstractEntity{
     @Column(columnDefinition = "boolean default user")
     private boolean isVerified;
 
+    @OneToMany(mappedBy = "appUserEntity")
+    private List<TeacherEntity> teacherEntities;
 
+    @OneToMany(mappedBy = "appUserEntity")
+    private List<StudentEntity> studentEntities;
 }
